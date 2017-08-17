@@ -1,0 +1,89 @@
+@import './common/var.css';
+@import './mixins/border_retina.css';
+@import './icon.css';
+
+.van-cell {
+  width: 100%;
+  display: table;
+  position: relative;
+  padding: 10px 15px 10px 0;
+  box-sizing: border-box;
+  line-height: 24px;
+  background-color: $c-white;
+  color: $c-black;
+  font-size: 14px;
+  text-decoration: none;
+  overflow: hidden;
+
+  &::after {
+    @mixin border-retina (bottom);
+  }
+
+  &:last-child {
+    &::after {
+      border-bottom: 0;
+    }
+  }
+
+  &-group {
+    padding-left: 15px;
+    position: relative;
+    background-color: #fff;
+
+    &::after {
+      @mixin border-retina (top, bottom);
+    }
+  }
+
+  &__title {
+    display: table-cell;
+  }
+
+  &__label {
+    display: block;
+    font-size: 12px;
+    line-height: 1.2;
+    color: $c-gray-darker;
+  }
+
+  &__value {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+    overflow: hidden;
+
+    &--link {
+      padding-right: 20px;
+    }
+
+    &--alone {
+      text-align: left;
+    }
+  }
+
+  &--required {
+    overflow: visible;
+
+    &::before {
+      content: '*';
+      position: absolute;
+      left: -7px;
+      font-size: 14px;
+      color: #f44;
+    }
+
+    .van-cell__title {
+      float: none;
+      display: inline-block;
+    }
+  }
+
+  &__right-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: $c-gray-dark;
+    font-size: 12px;
+  }
+}
